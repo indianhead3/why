@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> leftRightDifference(vector<int>& nums) {
+        vector<int> ans;
+        for(int i=0; i<nums.size(); i++){
+            int left=0; 
+            int right=0;
+            if(i>0){
+                for(int y=i-1; y>=0; y--)
+                    left+=nums[y];
+                    }
+
+            if(i<nums.size()){
+                for(int x=i+1; x<nums.size(); x++)
+                    right+=nums[x];
+            }       
+            ans.emplace_back(abs(left-right));
+        }
+        return ans;
+    }
+};
