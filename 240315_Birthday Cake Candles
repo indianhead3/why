@@ -1,0 +1,4 @@
+int birthdayCakeCandles(vector<int> candles) {
+    int Max = *max_element(candles.begin(), candles.end());
+    return count(candles.begin(), candles.end(), Max);
+}
