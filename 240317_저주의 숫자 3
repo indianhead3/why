@@ -8,3 +8,6 @@ int solution(int n) {
     }
     return num;
 }
+
+// num이 100이 넘는 경우도 고려 필요
+// (num % 100) /10 != 3)
