@@ -1,0 +1,10 @@
+int solution(int n) {
+    int cnt = 0;
+	int num = 0;
+	while (cnt < n) {
+		num++;
+		if ((num % 3 != 0) && (num % 10 != 3) && (num / 10 != 3) && ((num % 100) /10 != 3))
+			cnt=cnt+1;
+    }
+    return num;
+}
