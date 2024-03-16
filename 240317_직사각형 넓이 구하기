@@ -1,0 +1,16 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<vector<int>> dots) {
+    vector<int> len;
+    
+    for(int y=1; y<=3;y++){
+        len.emplace_back(abs(dots[y][0] - dots[0][0])+abs(dots[y][1] - dots[0][1]));
+    }
+    
+    sort(len.begin(), len.end());    
+    
+    return len[0]*len[1];;
+}
