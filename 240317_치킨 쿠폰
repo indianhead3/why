@@ -1,0 +1,13 @@
+int solution(int chicken) {
+    int answer = 0;
+    
+    while(1){
+    int a=chicken/10;
+    int b=chicken%10;
+    answer+= a;
+    chicken= a+b;  
+        if(chicken/10 < 1) break;
+    }
+
+    return answer;
+}
