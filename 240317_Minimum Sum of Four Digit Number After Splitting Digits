@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minimumSum(int num) {
+        vector<int> a(4);
+	
+	    a[0] = num / 1000;
+	    a[1] = (num % 1000) / 100;
+	    a[2] = (num % 100) / 10;
+	    a[3] = (num % 10) / 1;
+	
+	sort(a.begin(), a.end());
+
+	int answer = 10 * (a[0] + a[1]) + a[2] + a[3];
+    return answer;
+    }
+};
