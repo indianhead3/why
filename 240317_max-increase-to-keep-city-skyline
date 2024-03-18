@@ -3,7 +3,7 @@ public:
     int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {
         int n=grid.size();
         int diff = 0;
-        vector<int> yy(n, 0), xx(4, 0);
+        vector<int> yy(n, 0), xx(n, 0);
         
         for(int y=0; y<n; y++){
             for(int x=0; x<n; x++){
