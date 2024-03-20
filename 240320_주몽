@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+
+using namespace std;
+
+int main()
+{
+	int n, m, cnt=0;
+	cin >> n >> m;
+	vector<int> a(n);
+	unordered_map<int, int> um;
+
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+		um[a[i]] = 1;
+	}
+
+	for (int i = 0; i < n; i++) {
+		if (um[m - a[i]]) cnt++;
+	}
+	
+	cout << cnt / 2 << endl;
+
+	return 0;
+}
