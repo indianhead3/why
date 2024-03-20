@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	cin >> n;
+
+	int cnt = 1;
+	int start = n / 2 + 1;
+
+	for (int i = start; i >= 0; i--) {
+		int sum = 0;
+		for (int y = i; y >= 0; y--) {
+			sum += y;
+			if (sum == n) {
+				cnt++;
+				break;
+			}
+			else if (sum > n)
+				break;
+		}
+
+	}
+
+	cout << cnt;
+
+	return 0;
+}
