@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+	vector<int> now(nums);
+	int sum = 0;
+
+	for (int i = 1; i < nums.size(); i++) {
+		if (now[i] <= now[i - 1]) {
+			now[i] = now[i-1] + 1;
+			sum += now[i] - nums[i];
+		}
+	}
+    return sum;
+    }
+};
