@@ -1,0 +1,21 @@
+//팩토리얼 4 = > 1 * 2 * 3 * 4
+//Fact(4)
+//결과 24
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int fact(int x) {
+	if (x == 1) return 1;
+	else return x * fact(x - 1);
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	cout << fact(n) << endl;
+
+	return 0;
+}
