@@ -1,0 +1,87 @@
+#include <iostream>
+#define MAX_NODE 10
+
+using namespace std;
+
+struct Node {
+	int data;
+	Node* next;
+};
+
+Node node[MAX_NODE];
+int nodeCnt;
+Node* head;
+
+Node* getNode(int data) {
+	node[nodeCnt].data = data;
+	node[nodeCnt].next = nullptr;
+	return &node[nodeCnt++];
+}
+
+void init()
+{
+	nodeCnt = 0;
+	head = 0;
+}
+
+void AddFront(int data)
+{
+	Node* node = getNode(data);
+	node->next = head;
+	head = node;
+}
+
+void RemoveFront()
+{
+	head = head->next;;
+}
+
+void Size()
+{
+	int cnt = 0;
+	Node* pos = head;
+	while (pos != NULL) {
+		cnt++;
+		pos = pos->next;
+	}
+	cout << "Current Size of node is :" << cnt << endl;
+}
+
+void Front()
+{
+	Node* pos = head;
+	cout << "Front node is :" <<  head->data << endl;
+}
+
+void Print()
+{
+	cout << "=== Print Current Status ===" << endl;
+	Node* pos = head;
+	while (pos != NULL) {
+		cout << pos->data << endl;
+		pos = pos->next;
+	}
+	cout << "============================" << endl;
+}
+
+int main()
+{
+	init();
+	AddFront(1);
+	AddFront(2);
+	AddFront(3);
+	AddFront(4);
+	AddFront(5);
+	Print();
+	Size();
+	RemoveFront();
+	RemoveFront();
+	Print();
+	Size();
+	AddFront(6);
+	AddFront(7);
+	Print();
+	Size();
+
+	return 0;
+}
