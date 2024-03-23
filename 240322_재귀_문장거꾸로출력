@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void printReverse(char *str) {
+void printReverse(char* str) {
 	if (*str == '\0') return;
 	else {
 		printReverse(str + 1);
@@ -13,6 +13,6 @@ void printReverse(char *str) {
 }
 
 int main() {
-	char str[10] = "abcde";
+	char str[] = "abcdefg";
 	printReverse(str);
 }
