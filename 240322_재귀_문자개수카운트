@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int cnt = 0;
+
+void countChar(char *str, char ch) {
+	if (*str == '\0') {
+		cout << cnt;
+		return;
+	}
+
+	else {
+		if (*str == ch) cnt++;
+		countChar(str + 1, ch);
+	}
+}
+
+int main() {
+	char str1[10] = "abddddcde";
+	char char1 = 'd';
+	countChar(str1, char1);
+}
