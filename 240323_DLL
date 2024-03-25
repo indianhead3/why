@@ -46,9 +46,9 @@ void Init()
 void AddFront(int data)
 {
 	Node* node = getNode(data);
-	node->prev = head;
 	node->next = head->next;
 	head->next->prev = node;
+	node->prev = head;
 	head->next = node;
 }
 
@@ -83,11 +83,11 @@ int Front()
 
 void AddBack(int data)
 {
-	Node* nnode = getNode(data);
-	nnode->prev = tail->prev;
-	tail->prev = nnode;
-	nnode->next = tail;
-	nnode->prev->next = nnode;
+	Node* node = getNode(data);
+	node->prev = tail->prev;
+	tail->prev->next = node;
+	node->next = tail;
+	tail->prev = node;
 }
 
 void RemoveBack()
@@ -97,13 +97,13 @@ void RemoveBack()
 	tail->prev = rnode->prev;
 }
 
-void InsertPrev(Node* Prev, int data) // ?? Prev  주소 (head로 테스트 함)
+void InsertPrev(Node* Prev, int data) // ?? Prev 주소 (head로 테스트 함)
 {
-	Node* nnode = getNode(data);
-	nnode->prev = Prev;
-	nnode->next = Prev->next;
-	Prev->next->prev = nnode;
-	Prev->next = nnode;
+	Node* node = getNode(data);
+	node->prev = Prev;
+	node->next = Prev->next;
+	Prev->next->prev = node;
+	Prev->next = node;
 }
 
 void Remove(Node* RNode) // 테스트 방법??
@@ -170,19 +170,19 @@ int main()
 	//Size();
 	//Front();
 
-	//AddBack(6);
-	//AddBack(7);
-	//Print();
+	AddBack(6);
+	AddBack(7);
+	Print();
 	//Size();
 	//Front();
 
-	//RemoveBack();
-	//Print();
-	//Size();
+	RemoveBack();
+	Print();
+	cout << Size() << endl;
 
-	//PrintReverse();
+	PrintReverse();
 
-	//InsertPrev(head, 300);
+	InsertPrev(head, 300);
 
 	//Print();
 	//Size();
