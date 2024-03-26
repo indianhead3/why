@@ -1,0 +1,94 @@
+#include <iostream>
+#define MAX_NODE 10
+
+using namespace std;
+
+struct Node {
+	int data;
+	Node* next;
+};
+
+Node node[MAX_NODE];
+int nodeCnt;
+Node* head;
+
+Node* getNode(int data) {
+	node[nodeCnt].data = data;
+	node[nodeCnt].next = nullptr;
+	return &node[nodeCnt++];
+}
+
+void init()
+{
+	nodeCnt = 0;
+	head = NULL;
+}
+
+void AddFront(int data)
+{
+	Node* newNode = getNode(data);
+	newNode->next = head;
+	head = newNode;
+}
+
+void RemoveFront()
+{
+	if (head == NULL)
+		return;
+
+	head = head->next;;
+	nodeCnt--;
+}
+
+int Size()
+{
+	return nodeCnt;
+}
+
+int Front()
+{
+	Node* pos = head;
+	if (pos == NULL) return -1; //노드없을 경우 -1
+
+	return head->data;
+}
+
+void Print()
+{
+	cout << "=== Print Current Status ===" << endl;
+	Node* pos = head;
+	while (pos != NULL) {
+		cout << pos->data << " ";
+		pos = pos->next;
+	}
+	cout << "\n";
+	cout << "============================" << endl;
+}
+
+int main()
+{
+	init();
+
+	RemoveFront();
+
+	cout << Front() << endl;
+	AddFront(1);
+	AddFront(2);
+	AddFront(3);
+	AddFront(4);
+	AddFront(5);
+	Print();
+	cout << Size() << endl;
+	cout << Front() << endl;
+	RemoveFront();
+	RemoveFront();
+	Print();
+	cout << Size() << endl;
+	AddFront(6);
+	AddFront(7);
+	Print();
+	cout << Size() << endl;
+	cout << Front() << endl;
+	
+	return 0;
+}
