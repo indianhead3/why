@@ -1,0 +1,209 @@
+//DLL ->
+//AddFront(e) **
+//RemoveFront() **
+//Size() **
+//Front() **
+//AddBack(e) **
+//RemoveBack() **
+//InsertPrev(n, e) **
+//Remove(n) ??
+//Print() **
+//PrintReverse() **
+//Reverse()
+
+#include <iostream>
+#define MAX_NODE 10
+
+using namespace std;
+
+struct Node {
+	int data;
+	Node* next;
+	Node* prev;
+};
+
+Node node[MAX_NODE];
+int nodeCnt;
+Node* head;
+Node* tail;
+
+Node* getNode(int data) {
+	node[nodeCnt].data = data;
+	node[nodeCnt].prev = nullptr;
+	node[nodeCnt].next = nullptr;
+	return &node[nodeCnt++];
+}
+
+void Init()
+{
+	nodeCnt = 0;
+	head = NULL;
+	tail = NULL;
+
+	//head = getNode(-1); //더미노드 
+	//tail = getNode(-1); //더미노드
+	//head->next = tail;
+	//tail->prev = head;
+}
+
+void AddFront(int data)
+{
+	Node* newNode = getNode(data);
+
+	if (head == NULL) {
+		newNode->next = head;
+		head = newNode;
+	}
+
+	else{
+		newNode->next = head;
+		head->prev = newNode;
+
+
+	node->next = head->next;
+	head->next->prev = node;
+	node->prev = head;
+	head->next = node;
+}
+
+void RemoveFront()
+{
+	Node* rnode = head->next;
+	head->next = rnode->next;
+	rnode->next->prev = head;
+}
+
+int Size()
+{
+	int cnt = 0;
+	Node* pos = head->next;
+
+	if (pos == tail) return 0 ;
+
+	while (pos != tail) {
+		cnt++;
+		pos = pos->next;
+	}
+	return cnt;
+}
+
+int Front()
+{
+	Node* pos = head->next;
+	if (pos == tail) return -1;
+
+	return head->next->data;
+}
+
+void AddBack(int data)
+{
+	Node* node = getNode(data);
+	node->prev = tail->prev;
+	tail->prev->next = node;
+	node->next = tail;
+	tail->prev = node;
+}
+
+void RemoveBack()
+{
+	Node* rnode = tail->prev;
+	rnode->prev->next = tail;
+	tail->prev = rnode->prev;
+}
+
+void InsertPrev(Node* Prev, int data) // ?? Prev 주소 (head로 테스트 함)
+{
+	Node* node = getNode(data);
+	node->prev = Prev;
+	node->next = Prev->next;
+	Prev->next->prev = node;
+	Prev->next = node;
+}
+
+void Remove(Node* RNode) // 테스트 방법??
+{
+	Node* pos = head->next;
+	while (pos != RNode) {
+		pos = pos->next;
+	}
+	pos->prev->next = pos->next;
+	pos->next->prev = pos->prev;;
+}
+
+void Print()
+{
+	cout << "=== Print Current Status ===" << endl;
+	Node* pos = head->next;
+	while (pos != tail) {
+		cout << pos->data << endl;
+		pos = pos->next;
+	}
+	cout << "============================" << endl;
+}
+
+void PrintReverse()
+{
+	cout << "=== Print Current Status Backward ===" << endl;
+	Node* pos = tail->prev;
+	while (pos != head) {
+		cout << pos->data << endl;
+		pos = pos->prev;
+	}
+	cout << "============================" << endl;
+}
+
+//void Reverse()
+//{
+//	Node* pos = head;
+//	Node* temp;
+//
+//	while (pos != NULL) {
+//		temp = pos->prev;
+//		pos->prev = pos->next;
+//		pos->next = temp;
+//		pos = pos->next;
+//	}
+//}
+
+int main()
+{
+	Init();
+	cout << Size() << endl;
+	cout << Front() << endl;
+	AddFront(1);
+	AddFront(2);
+	AddFront(3);
+	AddFront(4);
+	AddFront(5);
+	Print();
+	cout << Size() << endl;
+	cout << Front() << endl;
+	////RemoveFront();
+	//RemoveFront();
+	//Print();
+	//Size();
+	//Front();
+
+	AddBack(6);
+	AddBack(7);
+	Print();
+	//Size();
+	//Front();
+
+	RemoveBack();
+	Print();
+	cout << Size() << endl;
+
+	PrintReverse();
+
+	InsertPrev(head, 300);
+
+	//Print();
+	//Size();
+
+	////Reverse();
+	//Print();
+	//Size();
+
+	return 0;
+}
